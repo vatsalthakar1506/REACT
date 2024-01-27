@@ -28,4 +28,4 @@
     
 - Name Export/Import
     -  export const Component
-    - import {Component} from "Path" 
+    - import {Component} from "Path@" 
