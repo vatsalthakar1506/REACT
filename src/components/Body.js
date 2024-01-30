@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import cardList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import { Shimmer } from "./Shimmer";
 
 
 export const Body = ()=>{
@@ -18,13 +19,14 @@ export const Body = ()=>{
            setCards(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
-
-    if(cards.length===0){
-        return (<h1>Loading....</h1>)
-    }
-    return (
+    return cards.length===0 ? (<Shimmer></Shimmer>) :   (
         <div className="body">
                 <div className="filter">
+                    <div className="search">
+                        <input type="text" className="search-box" /> 
+                        <button>Search</button>
+                    </div>
+
                     <button className="filter-btn" onClick={()=>{
                         const aboveFourStar = cards.filter(res=> res.info.avgRating >= 4.4);
                         console.log(aboveFourStar);
@@ -33,6 +35,8 @@ export const Body = ()=>{
                         Top Rated Restaurants
                     </button>
                 </div>
+
+
             <div className="res-container">
                 {cards.map(restaurant=> {
                   return (<RestaurantCard key={restaurant.info.id} resData = {restaurant}/>)
