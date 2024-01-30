@@ -33,7 +33,8 @@
     border-radius: 5px;
     margin: 4px;
 }
-.res-container{
+
+.res-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -52,7 +53,28 @@
     width: 100%;
 }
 
-.filter-btn{
+.filter-btn {
     margin: 10px;
     cursor: pointer;
+}
+
+.shimmer-container {
+    display: flex;
+}
+
+.shimmer-cards {
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
+    height: 400px;
+    margin: 20px;
+}
+.login{
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.filter{
+    display: flex;
+    
 }
