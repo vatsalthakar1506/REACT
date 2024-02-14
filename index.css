@@ -69,12 +69,18 @@
     height: 400px;
     margin: 20px;
 }
-.login{
+
+.login {
     padding: 20px;
     margin-right: 20px;
 }
 
-.filter{
+.filter {
     display: flex;
-    
+
+}
+
+.logo-container img {
+    width: 100px;
+    padding: 20px;
 }

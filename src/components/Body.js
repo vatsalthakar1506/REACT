@@ -5,7 +5,7 @@ import { Shimmer } from "./Shimmer";
 
 
 export const Body = ()=>{
-
+    
     const [cards, setCards] = useState([]);
     const [filterrestaurant,setFilterrestaurant] = useState([]);
     const [searchText, setSearchText] =   useState("");
@@ -17,7 +17,7 @@ export const Body = ()=>{
     },[])
 
     const fetchData = async ()=>{
-        const data = await fetch('https://corsproxy.org/?'+encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.2996951&lng=70.7757594&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'));
+        const data = await fetch('https://corsproxy.org/?'+encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.5222203&lng=70.4579436&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'));
         const json = await data.json();
         // console.log("JSON---->",json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
            setCards(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);     
