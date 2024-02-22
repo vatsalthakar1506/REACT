@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import cardList from "../utils/mockData";
 import  React, { useEffect, useState } from "react";
 import { Shimmer } from "./Shimmer";
-
+import {Link} from "react-router-dom";
 
 export const Body = ()=>{
     
@@ -17,9 +17,9 @@ export const Body = ()=>{
     },[])
 
     const fetchData = async ()=>{
-        const data = await fetch('https://corsproxy.org/?'+encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.5222203&lng=70.4579436&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'));
+        const data = await fetch('https://corsproxy.org/?'+encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.3038945&lng=70.80215989999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'));
         const json = await data.json();
-        // console.log("JSON---->",json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        //  console.log("JSON---->",json?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
            setCards(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);     
            setFilterrestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
     }
@@ -44,18 +44,21 @@ export const Body = ()=>{
 
                         const filterOption = btnRatedRes == 'Top Rated Restaurants' ?  aboveFourStar : cards;
                         const newButtonLabel = btnRatedRes == 'Top Rated Restaurants' ? 'All Restaurants' : 'Top Rated Restaurants'
-                        
+                    
                         setFilterrestaurant(filterOption);
                         setBtnRatedRes(newButtonLabel);
-                 
                     }}>
                         {btnRatedRes}
                     </button>
                 </div>
             <div className="res-container">
-                {filterrestaurant.map(restaurant=> {
-                  return (<RestaurantCard key={restaurant.info.id} resData = {restaurant}/>)
-                })}
+                
+
+
+                {filterrestaurant.map(restaurant=>
+                     <Link key={restaurant.info.id} to={"/restaurants/"+restaurant.info.id}> 
+                        <RestaurantCard  resData = {restaurant}/> 
+                     </Link>)}
             </div>
          </div>
     )
